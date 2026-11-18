@@ -8,8 +8,7 @@
       @font-face {
         font-family: "Origin Tech";
         src: url("../Customer-Queue-Game/assets/fonts/OriginTechRegular.woff")
-          format("woff");
-
+        format("woff");
         font-weight: normal;
         font-style: normal;
         font-display: swap;
@@ -31,6 +30,12 @@
         margin-bottom: 60px;
       }
 
+      h2 {
+        text-align: center;
+        margin-bottom: 60px;
+        color: rgb(35, 35, 177);
+      }
+
       header {
         display: flex;
         justify-content: center;
@@ -50,15 +55,15 @@
         list-style: none;
       }
 
-      .one img {
+      img {
         height: 90px;
-        width: 160px;
+      }
+
+      .one img {
         border-radius: 10px;
       }
       .two img {
-        height: 90px;
         border-radius: 10px;
-        width: 160px;
       }
 
       a {
@@ -74,26 +79,36 @@
         box-shadow: 0 0 40px white;
         outline: 5px solid navy;
         cursor: pointer;
+        text-decoration: none;
+        cursor: crosshair;
       }
-    /*   .one img:hover {
-      } */
+      .one img:hover {
+        content: url(../Customer-Queue-Game/assets/img/david/913911680_1447970100781094_5712307893808815915_n.png);
+      }
       .two img:hover {
         content: url("../Customer-Queue-Game/assets/img/darwin/04067009-c1f2-4f6e-82ec-7fe77ae37bcc.jpg");
         height: 90px;
       }
 
       a:hover {
-        outline: solid black;
+        outline: 5px solid black;
+        font-size: 0;
+      }
+      a:hover::after {
+        content: "Let Us Start";
+        font-size: 50px;
+        text-decoration: none;
       }
     </style>
   </head>
   <body>
     <h1>Queue Game</h1>
+    <h2>Developer</h2>
     <header>
       <ul>
         <div class="creator one">
           <img
-            src="../Customer-Queue-Game/assets/img/david/913911680_1447970100781094_5712307893808815915_n.png"
+            src="../Customer-Queue-Game/assets/img/david/914434826_1135657729106387_475444346712347808_n.jpg"
             alt=""
           />
           <li>David John</li>
