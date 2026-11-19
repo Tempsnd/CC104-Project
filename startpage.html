@@ -59,10 +59,7 @@
         height: 90px;
       }
 
-      .one img {
-        border-radius: 10px;
-      }
-      .two img {
+      .one, .two, .three, img {
         border-radius: 10px;
       }
 
@@ -77,7 +74,7 @@
         padding: 20px;
         border-radius: 9px;
         box-shadow: 0 0 40px white;
-        outline: 5px solid navy;
+        outline: 5px dotted rgba(0, 0, 0, 0.449);
         cursor: pointer;
         text-decoration: none;
         cursor: crosshair;
@@ -87,11 +84,17 @@
       }
       .two img:hover {
         content: url("../Customer-Queue-Game/assets/img/darwin/04067009-c1f2-4f6e-82ec-7fe77ae37bcc.jpg");
-        height: 90px;
+      }
+
+      .three img:hover {
+        content: url(../Customer-Queue-Game/assets/img/Rhamz/f19b21a1-38b8-4819-a5c5-196e39dfe626.jpg);
+      }
+      .four img:hover {
+        content: url("../Customer-Queue-Game/assets/img/Dominic/913531908_2128579904685639_6473671721193397563_n.jpg")
       }
 
       a:hover {
-        outline: 5px solid black;
+        outline: 5px dotted black;
         font-size: 0;
       }
       a:hover::after {
@@ -99,17 +102,21 @@
         font-size: 50px;
         text-decoration: none;
       }
+      
+
+
+      
     </style>
   </head>
   <body>
     <h1>Queue Game</h1>
-    <h2>Developer</h2>
+    <h2>Developers</h2>
     <header>
       <ul>
         <div class="creator one">
           <img
             src="../Customer-Queue-Game/assets/img/david/914434826_1135657729106387_475444346712347808_n.jpg"
-            alt=""
+            alt="davidi"
           />
           <li>David John</li>
         </div>
@@ -121,9 +128,11 @@
           <li>Darwin Frias</li>
         </div>
         <div class="creator three">
+            <img src="../Customer-Queue-Game/assets/img/Rhamz/14ebaba3-1f43-4235-996d-5ab7a9a539fb.jpg" alt="rhamz">
           <li>Rhamz Ramos</li>
         </div>
         <div class="creator four">
+          <img src="../Customer-Queue-Game/assets/img/Dominic/910879125_1818664192712113_3842737022160444884_n.jpg" alt="dominic">
           <li>Dominic Perez</li>
         </div>
       </ul>
