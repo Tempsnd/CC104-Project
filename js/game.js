@@ -99,3 +99,42 @@ function reset() {
   render();
 }
 
+// ===== SCREEN UPDATES =====
+
+// Show a message ("error", "success" or "" for normal)
+function showMessage(text, type) {
+  $("#message").removeClass("message-error message-success");
+  if (type) {
+    $("#message").addClass("message-" + type);
+  }
+  $("#message").text(text);
+}
+
+// Update everything on the screen
+function render() {
+  renderCounter();
+  renderUpNext();
+  renderQueue();
+  renderStats();
+}
+
+// The customer at the counter (front of the queue)
+function renderCounter() {
+  const front = peek();
+
+  if (front) {
+    $("#nowServing").text("#" + front.number + " · " + front.name);
+    $("#orderText").text(front.order);
+    $("#ticketBadge").text("#" + front.number);
+
+    $(".customer-focus .avatar-hair").css("background", front.hair);
+    $(".customer-focus .avatar-head").css("background", front.skin);
+    $(".customer-focus .avatar-body").css("background", front.shirt);
+
+    $(".customer-focus, .order-bubble, .ticket-badge").removeClass("empty");
+  } else {
+    $("#nowServing").text("No guests waiting");
+    $("#orderText").text("No customer yet");
+    $(".customer-focus, .order-bubble, .ticket-badge").addClass("empty");
+  }
+}
