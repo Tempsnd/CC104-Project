@@ -138,3 +138,18 @@ function renderCounter() {
     $(".customer-focus, .order-bubble, .ticket-badge").addClass("empty");
   }
 }
+// The "Up next" card (second customer in the queue)
+function renderUpNext() {
+  const next = queue[1];
+
+  if (next) {
+    $("#upNext").text("#" + next.number);
+    $("#upNextName").text(next.name);
+    $("#nextHair").css("background", next.hair);
+    $("#nextHead").css("background", next.skin);
+    $("#nextBody").css("background", next.shirt);
+  } else {
+    $("#upNext").text("None");
+    $("#upNextName").text("No one yet");
+  }
+}
