@@ -12,9 +12,10 @@ const DRINK_ICONS = {
   "Matcha": "assets/icons-for-queue/macha.svg"
 };
 
-let queue = [];  
-let customerNo = 100;  
+let queue = [];
+let customerNo = 100;
 let served = 0;
+let gameOver = false;
 
 function randomItem(list) {
   return list[Math.floor(Math.random() * list.length)];
