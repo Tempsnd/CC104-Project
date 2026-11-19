@@ -1,6 +1,7 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
   <head>
+<<<<<<<< HEAD:game/index.html
     <meta charset="utf=8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Customer Queue Game</title>
@@ -11,10 +12,129 @@
     <link rel="stylesheet" href="../CSS/panelmiddle.css">
     <link rel="stylesheet" href="../CSS/panelmidservice.css">
     <link rel="stylesheet" href="../CSS/panelright.css">
+========
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Queue Game</title>
+    <link rel="stylesheet" href="./css/general.css" />
+    <style>
+      @font-face {
+        font-family: "Origin Tech";
+        src: url("./assets/fonts/OriginTechRegular.woff") format("woff");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: "Origin Tech";
+      }
+>>>>>>>> startpage_2nd:index.html
 
-    
+      body {
+        background-image:
+          linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+        background-size: 66px 66px;
+      }
+      h1 {
+        text-align: center;
+        font-size: 75px;
+        margin-bottom: 60px;
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 60px;
+        color: rgb(37, 72, 37);
+      }
+
+      header {
+        display: flex;
+        justify-content: center;
+      }
+
+      ul {
+        display: flex;
+        gap: 100px;
+      }
+
+      .creator {
+        display: block;
+        align-items: center;
+        text-align: center;
+      }
+      ul li {
+        list-style: none;
+      }
+
+      img {
+        height: 90px;
+      }
+
+      .one,
+      .two,
+      .three,
+      img {
+        border-radius: 10px;
+      }
+
+      a {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        color: black;
+        font-size: 50px;
+        padding: 20px;
+        border-radius: 9px;
+        box-shadow: 0 0 40px white;
+        outline: 5px dotted rgba(0, 0, 0, 0.449);
+        cursor: pointer;
+        text-decoration: none;
+        cursor: crosshair;
+        animation: float 2s ease-in-out infinite;
+      }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translate(-50%, -50%);
+        }
+
+        50% {
+          transform: translate(-50%, -60%);
+        }
+      }
+      .one img:hover {
+        content: url(./assets/img/david/913911680_1447970100781094_5712307893808815915_n.png);
+      }
+      .two img:hover {
+        content: url("./assets/img/darwin/04067009-c1f2-4f6e-82ec-7fe77ae37bcc.jpg");
+      }
+
+      .three img:hover {
+        content: url(./assets/img/Rhamz/f19b21a1-38b8-4819-a5c5-196e39dfe626.jpg);
+      }
+      .four img:hover {
+        content: url("./assets/img/Dominic/913531908_2128579904685639_6473671721193397563_n.jpg");
+      }
+
+      a:hover {
+        outline: 5px dotted black;
+        font-size: 0;
+      }
+      a:hover::after {
+        content: "Let Us Start";
+        font-size: 50px;
+        text-decoration: none;
+      }
+    </style>
   </head>
   <body>
+<<<<<<<< HEAD:game/index.html
 
     <div class="blob"></div>
     <div class="blob2"></div>
@@ -31,15 +151,27 @@
             </div>
             <p>Diddy Bro-ster cafe</p>
           </div>
+========
+    <h1>Queue Game</h1>
+    <h2>Developers</h2>
+    <header>
+      <ul>
+        <div class="creator one">
+          <img
+            src="./assets/img/david/914434826_1135657729106387_475444346712347808_n.jpg"
+            alt="davidi"
+          />
+          <li>David John</li>
+>>>>>>>> startpage_2nd:index.html
         </div>
-
-        <!--Middle side of the header-->
-        <div class="col-4 text-center">
-          <div class="middle-header">
-            <div class="shift-label" >MORNING RUSH</div>
-            <div class="goal-badge">SERVE 10</div>
-          </div>
+        <div class="creator two">
+          <img
+            src="./assets/img/darwin/e7c9ad3c-6ca9-430a-abf2-6d88e9dd9d68.jpg"
+            alt="darwin"
+          />
+          <li>Darwin Frias</li>
         </div>
+<<<<<<<< HEAD:game/index.html
 
         <!--Right side of the header-->
         <!--Reset button-->
@@ -104,8 +236,26 @@
             </button>
 
           </div>
+========
+        <div class="creator three">
+          <img
+            src="./assets/img/Rhamz/14ebaba3-1f43-4235-996d-5ab7a9a539fb.jpg"
+            alt="rhamz"
+          />
+          <li>Rhamz Ramos</li>
         </div>
+        <div class="creator four">
+          <img
+            src="./assets/img/Dominic/910879125_1818664192712113_3842737022160444884_n.jpg"
+            alt="dominic"
+          />
+          <li>Dominic Perez</li>
+>>>>>>>> startpage_2nd:index.html
+        </div>
+      </ul>
+    </header>
 
+<<<<<<<< HEAD:game/index.html
         <!--Middle Panel-->
         <div class="col-lg-6">
           <div class="middle-panel">
@@ -306,5 +456,10 @@
   <script src="../js/game.js"></script>
 
 
+========
+    <a href="./game/index.html" target="_blank" rel="noopener noreferrer"
+      >Start Game!</a
+    >
+>>>>>>>> startpage_2nd:index.html
   </body>
 </html>
