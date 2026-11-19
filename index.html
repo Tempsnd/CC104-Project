@@ -1,310 +1,163 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
   <head>
-    <meta charset="utf=8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Customer Queue Game</title>
-    <link rel="stylesheet" href="assets/bootstrap.min.css">
-    <link rel="stylesheet" href="css/general.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/panelleft.css">
-    <link rel="stylesheet" href="css/panelmiddle.css">
-    <link rel="stylesheet" href="css/panelmidservice.css">
-    <link rel="stylesheet" href="css/panelright.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Queue Game</title>
+    <link rel="stylesheet" href="./css/general.css" />
+    <style>
+      @font-face {
+        font-family: "Origin Tech";
+        src: url("./assets/fonts/OriginTechRegular.woff") format("woff");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: "Origin Tech";
+      }
 
-    
+      body {
+        background-image:
+          linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+        background-size: 66px 66px;
+      }
+      h1 {
+        text-align: center;
+        font-size: 75px;
+        margin-bottom: 60px;
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 60px;
+        color: rgb(37, 72, 37);
+      }
+
+      header {
+        display: flex;
+        justify-content: center;
+      }
+
+      ul {
+        display: flex;
+        gap: 100px;
+      }
+
+      .creator {
+        display: block;
+        align-items: center;
+        text-align: center;
+      }
+      ul li {
+        list-style: none;
+      }
+
+      img {
+        height: 90px;
+      }
+
+      .one,
+      .two,
+      .three,
+      img {
+        border-radius: 10px;
+      }
+
+      a {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        color: black;
+        font-size: 50px;
+        padding: 20px;
+        border-radius: 9px;
+        box-shadow: 0 0 40px white;
+        outline: 5px dotted rgba(0, 0, 0, 0.449);
+        cursor: pointer;
+        text-decoration: none;
+        cursor: crosshair;
+        animation: float 2s ease-in-out infinite;
+      }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translate(-50%, -50%);
+        }
+
+        50% {
+          transform: translate(-50%, -60%);
+        }
+      }
+      .one img:hover {
+        content: url(./assets/img/david/913911680_1447970100781094_5712307893808815915_n.png);
+      }
+      .two img:hover {
+        content: url("./assets/img/darwin/04067009-c1f2-4f6e-82ec-7fe77ae37bcc.jpg");
+      }
+
+      .three img:hover {
+        content: url(./assets/img/Rhamz/f19b21a1-38b8-4819-a5c5-196e39dfe626.jpg);
+      }
+      .four img:hover {
+        content: url("./assets/img/Dominic/913531908_2128579904685639_6473671721193397563_n.jpg");
+      }
+
+      a:hover {
+        outline: 5px dotted black;
+        font-size: 0;
+      }
+      a:hover::after {
+        content: "Let Us Start";
+        font-size: 50px;
+        text-decoration: none;
+      }
+    </style>
   </head>
   <body>
-
-    <div class="blob"></div>
-    <div class="blob2"></div>
-
-    <div class="Customer-Queue container-fluid py-4">
-
-      <!--Header code-->
-      <div class="header row mb-1">
-
-        <div class="col-4">
-          <div class="left-header">
-            <div class="game-icon">
-              <img src="assets/icons/coffee.svg">
-            </div>
-            <p>Brewster Caffee</p>
-          </div>
+    <h1>Queue Game</h1>
+    <h2>Developers</h2>
+    <header>
+      <ul>
+        <div class="creator one">
+          <img
+            src="./assets/img/david/914434826_1135657729106387_475444346712347808_n.jpg"
+            alt="davidi"
+          />
+          <li>David John</li>
         </div>
-
-        <!--Middle side of the header-->
-        <div class="col-4 text-center">
-          <div class="middle-header">
-            <div class="shift-label" >MORNING RUSH</div>
-            <div class="goal-badge">SERVE 10</div>
-          </div>
+        <div class="creator two">
+          <img
+            src="./assets/img/darwin/e7c9ad3c-6ca9-430a-abf2-6d88e9dd9d68.jpg"
+            alt="darwin"
+          />
+          <li>Darwin Frias</li>
         </div>
-
-        <!--Right side of the header-->
-        <!--Reset button-->
-        <div class="col-4 text-end">
-          <div class="right-header">
-
-            <!--Target this with JS-->
-            <button id="resetBtn" class="reset-btn">
-              <img src="assets/icons/Arrow-Reload--Streamline-Sharp-Streamline-Material-Free.svg">
-              Reset
-            </button>
-          </div>
+        <div class="creator three">
+          <img
+            src="./assets/img/Rhamz/14ebaba3-1f43-4235-996d-5ab7a9a539fb.jpg"
+            alt="rhamz"
+          />
+          <li>Rhamz Ramos</li>
         </div>
-
-      </div>
-   
-      <div class="row g-4 game-area">
-
-        <!--Left side of the game-->
-        <div class="col-lg-3">
-          <div class="left-panel text-center">
-            <p class="label">SHIFT PROGRESS</p>
-  
-            <div class="progress-circle">
-              <svg class="ring" viewBox="0 0 116 116">
-                <circle class="ring-track" cx="58" cy="58" r="53"></circle>
-                <circle id="ringFill" class="ring-fill" cx="58" cy="58" r="53"></circle>
-              </svg>
-              <span id="servedCount">0</span> of 10
-            </div>
-            <p class="goal-sub">First in, first served</p>
-
-            <div class="borderline"></div>
-
-            <div class="stat-row">
-              <div class="stat-icon stat-icon-green">
-                <img src="assets/icons/users.svg">
-              </div>
-              <div class="stat-info">
-                <p class="stat-label">Waiting now</p>
-
-                <!--Target this with JS-->
-                <p class="stat-value"><span id="waitingCount">0</span> customers</p>
-              </div>
-            </div>
-
-            <!--Target this with JS-->
-            <div class="stat-row">
-              <div class="stat-icon stat-icon-red">
-                <img src="assets/icons/circle-check.svg">
-            </div>
-              <div class="stat-info">
-                <p class="stat-label">Total served</p>
-                <p class="stat-value"><span id="totalServed">0</span> customers</p>
-              </div>
-            </div>
-
-            <!--Target with JS-->
-            <button id="addBtn" class="add-btn">
-              <img src="assets/icons/plus.svg">
-              Add customer
-            </button>
-
-          </div>
+        <div class="creator four">
+          <img
+            src="./assets/img/Dominic/910879125_1818664192712113_3842737022160444884_n.jpg"
+            alt="dominic"
+          />
+          <li>Dominic Perez</li>
         </div>
+      </ul>
+    </header>
 
-        <!--Middle Panel-->
-        <div class="col-lg-6">
-          <div class="middle-panel">
-
-            <!-- This is just a design for a coffee scene dont touch it-->
-          <div class="cafe-scene">
-
-            <!-- Menu board on the wall -->
-            <div class="menu-board">
-              <span>MENU</span>
-              <i></i>
-              <i></i>
-            </div>
-
-            <!-- Two pictures on the wall -->
-            <div class="wall-art wall-art-one"><span></span></div>
-            <div class="wall-art wall-art-two"><span></span></div>
-
-            <!-- Plant -->
-            <div class="plant">
-              <i></i>
-              <i></i>
-              <i></i>
-              <b></b>
-            </div>
-
-            <!-- The customer -->
-            <div class="customer-focus">
-              <div class="avatar avatar-large">
-                <span class="avatar-hair" style="background: #8A6A4F;"></span>
-                <span class="avatar-head" style="background: #A86B4A;">
-                  <i class="eye eye-left"></i>
-                  <i class="eye eye-right"></i>
-                  <i class="smile"></i>
-                </span>
-                <span class="avatar-body" style="background: #3F6F85;"></span>
-              </div>
-            </div>
-
-            <!-- Ticket badge -->
-            <div class="ticket-badge empty" id="ticketBadge">#101</div>
-
-            <!-- Order bubble -->
-              <div class="order-bubble">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M10 2v2"/><path d="M14 2v2"/>
-                <path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1"/>
-                <path d="M6 2v2"/>
-              </svg>
-
-              <!--Target this with JS-->
-              <div>
-                <small>Ordering</small>
-                <strong id="orderText">No customer yet</strong>
-              </div>
-            </div>
-
-            <!-- Counter in front -->
-            <div class="counter-front">
-              <div class="counter-lines"></div>
-              <div class="register"><span></span><i></i></div>
-              <div class="tip-jar">TIPS</div>
-            </div>
-
-          </div>
-
-          <!--Target with JS-->
-          <div class="service-area">
-
-          <div class="service-heading">
-            <div id="counter" class="serving-main">
-              <p class="label">NOW SERVING</p>
-              <p id="nowServing" class="now-serving">No guests waiting</p>
-            </div>
-
-            <!--Target with JS-->
-            <div class="serving-next">
-                <p class="label">UP NEXT</p>
-                    <div class="next-info">
-                        <div class="avatar">
-                              <span id="nextHair" class="avatar-hair" style="background: #8A4A3A;"></span>
-                              <span id="nextHead" class="avatar-head" style="background: #E0A07F;"></span>
-                              <span id="nextBody" class="avatar-body" style="background: #E0705A;"></span>
-                          </div>
-                            <div class="next-text">
-                              <strong id="upNext">None</strong>
-                              <small id="upNextName">No one yet</small>
-                            </div>
-                      </div>
-              </div>
-          </div>
-
-              <p class="drink-hint">Choose the drink to serve the first guest.</p>
-          
-              <!--Target with JS-->
-              <div class="drink-buttons">
-                <button class="drink-btn" data-drink="Oat latte">Oat latte</button>
-                <button class="drink-btn" data-drink="Cappuccino">Cappuccino</button>
-                <button class="drink-btn" data-drink="Matcha">Matcha</button>
-              </div>
-
-              <div id="message" class="message-box">Click "Add customer" to start.</div>
-
-            </div>
-
-          </div>
-        </div>
-
-        <!-- Right Panel -->
-        <div class="col-lg-3">
-          <div class="right-panel">
-
-            <div class="queue-head">
-              <div>
-                <p class="label">WAITING LINE</p>
-                <h3 class="queue-title"><span id="queueCount">0</span> waiting</h3>
-              </div>
-              <span class="fifo-badge">FIFO</span>
-            </div>
-
-<div id="queueLine" class="queue-line">
-
-              <div class="queue-item front">
-                <span class="ticket-pill">#101</span>
-                <div class="avatar">
-                  <span class="avatar-hair" style="background: #2F4A55;"></span>
-                  <span class="avatar-head" style="background: #A86B4A;"></span>
-                  <span class="avatar-body" style="background: #3F6F85;"></span>
-                </div>
-                <div class="queue-info">
-                  <strong>Maya</strong>
-                  <small>At counter · first</small>
-                </div>
-                <span class="drink-icon"><img src="assets/icons-for-queue/oat-latte.svg" alt=""></span>
-              </div>
-
-              <div class="queue-item">
-                <span class="ticket-pill">#102</span>
-                <div class="avatar">
-                  <span class="avatar-hair" style="background: #8A4A3A;"></span>
-                  <span class="avatar-head" style="background: #E0A07F;"></span>
-                  <span class="avatar-body" style="background: #E0705A;"></span>
-                </div>
-                <div class="queue-info">
-                  <strong>Theo</strong>
-                  <small>Position 2</small>
-                </div>
-                <span class="drink-icon"><img src="assets/icons-for-queue/macha.svg" alt=""></span>
-              </div>
-
-              <div class="queue-item">
-                <span class="ticket-pill">#103</span>
-                <div class="avatar">
-                  <span class="avatar-hair" style="background: #8A7A2A;"></span>
-                  <span class="avatar-head" style="background: #7A4A2A;"></span>
-                  <span class="avatar-body" style="background: #D9AE3A;"></span>
-                </div>
-                <div class="queue-info">
-                  <strong>June</strong>
-                  <small>Position 3</small>
-                </div>
-                <span class="drink-icon"><img src="assets/icons-for-queue/oat-latte.svg" alt=""></span>
-              </div>
-
-              <div class="queue-item">
-                <span class="ticket-pill">#104</span>
-                <div class="avatar">
-                  <span class="avatar-hair" style="background: #4A5A3A;"></span>
-                  <span class="avatar-head" style="background: #B5714E;"></span>
-                  <span class="avatar-body" style="background: #7A9468;"></span>
-                </div>
-                <div class="queue-info">
-                  <strong>Noah</strong>
-                  <small>Position 4</small>
-                </div>
-                <span class="drink-icon"><img src="assets/icons-for-queue/cappuccino.svg" alt=""></span>
-              </div>
-
-            </div>      
-            
-            
-
-            <div class="queue-note">
-              <span class="note-icon">✦</span>
-              <div>
-                <p class="note-title">Queue rule</p>
-                <p class="note-text">Only the earliest ticket can be served. New arrivals always join the end.</p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-  <script src="assets/jquery-3.7.1.min.js"></script>
-  <script src="js/game.js"></script>
-
-
+    <a href="./game/index.html" target="_blank" rel="noopener noreferrer"
+      >Start Game!</a
+    >
   </body>
 </html>
