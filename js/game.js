@@ -16,6 +16,8 @@ let queue = [];
 let customerNo = 100;
 let served = 0;
 let gameOver = false;
+let totalWait = 0;
+let counterStart = 0;
 
 function randomItem(list) {
   return list[Math.floor(Math.random() * list.length)];
@@ -34,12 +36,18 @@ function enqueue() {
     order: randomItem(DRINKS),
     skin: randomItem(SKINS),
     hair: randomItem(HAIRS),
-    shirt: randomItem(SHIRTS)
+    shirt: randomItem(SHIRTS),
+    arrivedAt: Date.now()
   };
 
   queue.push(customer);
-  showMessage(customer.name + " (#" + customer.number + ") joined the line.", "");
-  render();
+    if (queue.length === 1) {   
+      counterStart = Date.now();
+    }
+    
+    showMessage(customer.name + " (#" + customer.number + ") joined the line.", "");
+    render();
+
 }
 
 function dequeue() {
@@ -77,7 +85,14 @@ function serveDrink(drink) {
   // correct drink: serve the earliest customer
   dequeue();
   served++;
-  showMessage("Served " + front.name + "'s " + front.order + "!", "success");
+
+
+  const waited = Math.round((Date.now() - front.startedAt) / 1000); 
+  totalWait += waited;
+  showMessage("Served " + front.name 
+    + "'s " + front.order + "! waited " 
+    + formatTime(waited) + ".", "success");
+
   checkWin();
   render();
 }
@@ -86,7 +101,10 @@ function serveDrink(drink) {
 function checkWin() {
   if (served >= TARGET) {
     gameOver = true;
-    showMessage("You win! You served " + TARGET + " customers.", "success");
+    const average = Math.round(totalWait / TARGET);
+     showMessage("You win! You served " 
+      + TARGET + " customers. Average wait: " 
+      + formatTime(average) + ".", "success");
   }
 }
 
@@ -98,6 +116,16 @@ function reset() {
   gameOver = false;
   showMessage('Click "Add customer" to start.', "");
   render();
+}
+
+// time convertion from seconds to minutes
+function formatTime(seconds) {
+  if (seconds < 60) {
+    return seconds + "s";
+  }
+  const m = Math.floor(seconds / 60);
+  const s = seconds % 60;
+  return m + "m " + s + "s";
 }
 
 // ===== SCREEN UPDATES =====
@@ -124,6 +152,9 @@ function renderCounter() {
   const front = peek();
 
   if (front) {
+    if (!front.startedAt) {                 
+      front.startedAt = Date.now();         
+    }  
     $("#nowServing").text("#" + front.number + " · " + front.name);
     $("#orderText").text(front.order);
     $("#ticketBadge").text("#" + front.number);
@@ -202,7 +233,19 @@ function renderStats() {
   $("#ringFill").css("stroke-dashoffset", 333 - (served / TARGET) * 333);
 }
 
+// Live timer: how long the customer at the counter has been waiting
+function updateTimer() {
+  const front = peek();
 
+  if (front && !gameOver) {
+    const seconds = Math.floor((Date.now() - front.startedAt) / 1000);
+    const m = Math.floor(seconds / 60);
+    const s = seconds % 60;
+    $("#waitTimer").text("Waiting " + m + ":" + (s < 10 ? "0" : "") + s);
+  } else {
+    $("#waitTimer").text("");
+  }
+}
 
 // ===== START =====
 $(document).ready(function () {
@@ -213,5 +256,6 @@ $(document).ready(function () {
     serveDrink($(this).data("drink"));
   });
 
+  setInterval(updateTimer, 1000); 
   render();
 });

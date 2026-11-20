@@ -27,6 +27,16 @@
   color: #243C37;
 }
 
+.wait-timer {
+  min-height: 18px;     
+  margin: 4px 0 0;
+  margin-left: 10px;
+  font-family: DM Sans;
+  font-size: 18px;
+  font-weight: 700;
+  color: #E58B6F;
+}
+
 /* up next card */  
 .serving-next {
   min-width: 150px;
