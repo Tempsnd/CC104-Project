@@ -11,10 +11,68 @@
     <link rel="stylesheet" href="css/panelmiddle.css">
     <link rel="stylesheet" href="css/panelmidservice.css">
     <link rel="stylesheet" href="css/panelright.css">
+    <link rel="stylesheet" href="css/start.css">
+    <link rel="stylesheet" href="css/youwin.css">
 
     
   </head>
   <body>
+
+  <!-- Start screen -->
+  <div id="startScreen" class="start-screen">
+    <div class="start-box">
+      <h1 class="start-title">Brewster Caffee</h1>
+      <p class="start-sub">Customer Queue Game</p>
+
+      <div class="start-crowd">
+        <div class="avatar start-avatar">
+          <span class="avatar-hair" style="background: #8A4A3A;"></span>
+          <span class="avatar-head" style="background: #E0A07F;"></span>
+          <span class="avatar-body" style="background: #E0705A;"></span>
+        </div>
+        <div class="avatar start-avatar">
+          <span class="avatar-hair" style="background: #8A6A4F;"></span>
+          <span class="avatar-head" style="background: #A86B4A;"></span>
+          <span class="avatar-body" style="background: #3F6F85;"></span>
+        </div>
+        <div class="avatar start-avatar">
+          <span class="avatar-hair" style="background: #4A5A3A;"></span>
+          <span class="avatar-head" style="background: #C98B65;"></span>
+          <span class="avatar-body" style="background: #D9AE3A;"></span>
+        </div>
+      </div>
+
+      <div class="start-rules">
+        <div class="rule"><span>1</span> Add customers to the line</div>
+        <div class="rule"><span>2</span> Click the drink they ordered</div>
+        <div class="rule"><span>3</span> Serve 10 guests, first in, first served</div>
+      </div>
+
+      <button id="startBtn" class="play-btn pulse">Click to start</button>
+    </div>
+  </div>
+
+  <div id="winScreen" class="start-screen win-screen">
+    <div id="confetti" class="confetti"></div> 
+    <div class="start-box">
+      <span class="start-badge">SHIFT OVER</span>
+      <h2 class="start-title">You win!</h2>
+      <p class="start-sub">Every guest was served in order</p>
+
+      <div class="win-stats">
+        <div class="win-stat">
+          <small>Customers served</small>
+          <strong id="winServed">10</strong>
+        </div>
+        <div class="win-stat">
+          <small>Average wait</small>
+          <strong id="winAverage">0s</strong>
+        </div>
+      </div>
+
+      <button id="playAgainBtn" class="play-btn">Play again</button>
+    </div>
+  </div>
 
     <div class="blob"></div>
     <div class="blob2"></div>
@@ -227,7 +285,7 @@
               <span class="fifo-badge">FIFO</span>
             </div>
 
-<div id="queueLine" class="queue-line">
+          <div id="queueLine" class="queue-line">
 
               <div class="queue-item front">
                 <span class="ticket-pill">#101</span>
