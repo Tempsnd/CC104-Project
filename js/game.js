@@ -251,6 +251,9 @@ function updateTimer() {
 $(document).ready(function () {
   $("#addBtn").click(enqueue);
   $("#resetBtn").click(reset);
+  $("#startBtn").click(function () {
+    $("#startScreen").fadeOut(400);
+  });
 
   $(".drink-btn").click(function () {
     serveDrink($(this).data("drink"));
