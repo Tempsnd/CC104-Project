@@ -5,6 +5,7 @@ const DRINKS = ["Oat latte", "Cappuccino", "Matcha"];
 const SKINS  = ["#A86B4A", "#E0A07F", "#7A4A2A", "#C98B65", "#8D5A3B"];
 const HAIRS  = ["#8A6A4F", "#8A4A3A", "#8A7A2A", "#4A5A3A", "#6B5A7A", "#5A4034"];
 const SHIRTS = ["#3F6F85", "#E0705A", "#D9AE3A", "#7A9468", "#8A6FA8", "#D98567"];
+const CONFETTI_COLORS = ["#E58B6F", "#2F5D50", "#D9AE3A", "#3F6F85", "#8A6FA8", "#7A9468"];
 
 const DRINK_ICONS = {
   "Oat latte": "assets/icons-for-queue/oat-latte.svg",
@@ -18,6 +19,25 @@ let served = 0;
 let gameOver = false;
 let totalWait = 0;
 let counterStart = 0;
+
+function launchConfetti() {
+  const box = $("#confetti");
+  box.empty();
+
+  for (let i = 0; i < 70; i++) {
+    const piece = $('<span class="confetti-piece"></span>');
+    piece.css({
+      left: Math.random() * 100 + "%",
+      background: randomItem(CONFETTI_COLORS),
+      width: 6 + Math.random() * 8 + "px",
+      height: 10 + Math.random() * 10 + "px",
+      animationDuration: 2.5 + Math.random() * 2.5 + "s",
+      animationDelay: Math.random() * 1.2 + "s"
+    });
+    piece[0].style.setProperty("--drift", (Math.random() * 200 - 100) + "px");
+    box.append(piece);
+  }
+}
 
 function randomItem(list) {
   return list[Math.floor(Math.random() * list.length)];
@@ -103,6 +123,8 @@ function checkWin() {
     gameOver = true;
     const average = Math.round(totalWait / TARGET);
 
+    $("#winScreen").addClass("show");
+    launchConfetti();     
     $("#winServed").text(TARGET);
     $("#winAverage").text(formatTime(average));
     setTimeout(function () {
@@ -118,6 +140,7 @@ function reset() {
   served = 0;
   gameOver = false;
   totalWait = 0;
+  $("#confetti").empty();     
   $("#winScreen").removeClass("show");
   showMessage('Click "Add customer" to start.', "");
   render(); 
@@ -251,6 +274,8 @@ function updateTimer() {
     $("#waitTimer").text("");
   }
 }
+
+
 
 // ===== START =====
 $(document).ready(function () {
