@@ -20,6 +20,7 @@ let gameOver = false;
 let totalWait = 0;
 let counterStart = 0;
 
+// celebration function
 function launchConfetti() {
   const box = $("#confetti");
   box.empty();
