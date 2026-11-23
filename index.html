@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/panelmidservice.css">
     <link rel="stylesheet" href="css/panelright.css">
     <link rel="stylesheet" href="css/start.css">
+    <link rel="stylesheet" href="css/youwin.css">
 
     
   </head>
@@ -48,6 +49,27 @@
       </div>
 
       <button id="startBtn" class="play-btn pulse">Click to start</button>
+    </div>
+  </div>
+
+  <div id="winScreen" class="start-screen win-screen">
+    <div class="start-box">
+      <span class="start-badge">SHIFT OVER</span>
+      <h2 class="start-title">You win!</h2>
+      <p class="start-sub">Every guest was served in order</p>
+
+      <div class="win-stats">
+        <div class="win-stat">
+          <small>Customers served</small>
+          <strong id="winServed">10</strong>
+        </div>
+        <div class="win-stat">
+          <small>Average wait</small>
+          <strong id="winAverage">0s</strong>
+        </div>
+      </div>
+
+      <button id="playAgainBtn" class="play-btn">Play again</button>
     </div>
   </div>
 

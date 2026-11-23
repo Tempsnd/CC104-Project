@@ -102,9 +102,12 @@ function checkWin() {
   if (served >= TARGET) {
     gameOver = true;
     const average = Math.round(totalWait / TARGET);
-     showMessage("You win! You served " 
-      + TARGET + " customers. Average wait: " 
-      + formatTime(average) + ".", "success");
+
+    $("#winServed").text(TARGET);
+    $("#winAverage").text(formatTime(average));
+    setTimeout(function () {
+      $("#winScreen").addClass("show");
+    }, 600);
   }
 }
 
@@ -114,8 +117,10 @@ function reset() {
   customerNo = 100;
   served = 0;
   gameOver = false;
+  totalWait = 0;
+  $("#winScreen").removeClass("show");
   showMessage('Click "Add customer" to start.', "");
-  render();
+  render(); 
 }
 
 // time convertion from seconds to minutes
@@ -254,6 +259,7 @@ $(document).ready(function () {
   $("#startBtn").click(function () {
     $("#startScreen").fadeOut(400);
   });
+  $("#playAgainBtn").click(reset);
 
   $(".drink-btn").click(function () {
     serveDrink($(this).data("drink"));
